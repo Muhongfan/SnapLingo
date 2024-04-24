@@ -1,2 +1,2 @@
-# super-duper-octo-carnival
-SnapLingo: Breaks language barriers for travelers. Snap a photo, get instant object labels translated to your preferred language. Explore with ease!
+# SnapLearn
+SnapLearn revolutionizes language learning by integrating immersive experiences with active learning techniques to learn the language through our surrounding environment. 
