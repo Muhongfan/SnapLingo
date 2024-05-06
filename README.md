@@ -50,6 +50,7 @@ SnapLearn revolutionizes language learning by integrating immersive experiences 
 
 1. **Frontend:**
    - **React** 
+   - **Chakra UI**
 2. **Backend:**
    - **Node.js**
    - **Express.js** 
@@ -62,31 +63,28 @@ SnapLearn revolutionizes language learning by integrating immersive experiences 
    - **Google Cloud Vision API** 
    - **Open AI API** 
    
-5. **Geo-socialization:**
+5. **Geo-socialization: (TBD)** 
    - **Google map API** 
-   - **Open AI API** 
+
 7. **Vocab Details:**
    - **Merriam-Webster Dictionary API** 
    
-8. **Version Control and Collaboration**
+8. **Version Control and Collaboration (TBD)**
    - **Git and GitHub**
 
 ### APIs
    - **Google Cloud Vision API** 
    - **Open AI API** 
-   - **Google map API** 
-   - **Open AI API** 
    - **Merriam-Webster Dictionary API** 
 
 ### Sitemap
 
-Login/Signup: User sign up / login
-Main: After User login, the most recent **pictures&vocabulaties** that were taken for learning will be shown
-Upload: Click on **Learn**, or end of the recent pictures section on the main page, can help users to take a picture for vocabulary learning
-Date: All the pictures used for learning sorted by dates
+Main: The most recent **pictures&vocabulaties** for learning will be shown
+Gallery: All the pictures that taken and used for learning are sorted by dates
+Caputre: Click on **Capture**, users can take a picture to analyze the objects on the picture and learn vocabulary.
 Category: All the pictures used for learning sorted by picture category, which is extracted by image classification algoritom.
 Vocab Details: Show the pronunciation, explanation, pictures/generated flash cards of the vocab learnt already. 
-Geo Social: Introduce map to show the location that user took the pics, and how many pics they took.
+Geo Social (TBD): Introduce map to show the location that user took the pics, and how many pics they took.
 
 ### Mockups
 Mockups (only provided mobile):
@@ -94,132 +92,84 @@ Mockups (only provided mobile):
 
 ![alt text](ui/mockup2.png)
 ### Data
+![Database Table](images/db_tables.png)
+1. Table image:
+```
+mysql> SELECT * FROM image LIMIT 10;
++-----------------------+-----------------------------------------------------------------------------------+------------------------------------------------+-------+---------+---------------------+---------------------+
+| id                    | content_url                                                                       | object_labels                                  | isImg | user_id | created_at          | updated_at          |
++-----------------------+-----------------------------------------------------------------------------------+------------------------------------------------+-------+---------+---------------------+---------------------+
+| -13Wf49QuSOndOErQ4XR1 | /Users/amberm/Documents/snaplingo-backend/uploads/image_-13Wf49QuSOndOErQ4XR1.jpg | ["Glasses", "Person", "Window"]                |     1 |       1 | 2024-05-04 20:03:35 | 2024-05-04 20:03:35 |
+| -9xjmxl69YB1nNo9CQnMO | /Users/amberm/Documents/snaplingo-backend/uploads/image_-9xjmxl69YB1nNo9CQnMO.jpg | ["Glasses", "Person"]                          |     1 |       1 | 2024-05-04 18:30:25 | 2024-05-04 18:30:25 |
+| -mAzV8J3lhuWroNyLaFzk | /Users/amberm/Documents/snaplingo-backend/uploads/image_-mAzV8J3lhuWroNyLaFzk.jpg | ["Glasses", "Person", "Stuffed toy", "Window"] |     1 |       1 | 2024-05-04 20:01:47 | 2024-05-04 20:01:47 |
+| -sIPGfrBkOJUYPFULZ9N1 | /Users/amberm/Documents/snaplingo-backend/uploads/image_-sIPGfrBkOJUYPFULZ9N1.jpg | []                                             |     1 |       1 | 2024-05-04 18:26:46 | 2024-05-04 18:26:46 |
+| -VXxV0l98XU0fjydxDpCF | /Users/amberm/Documents/snaplingo-backend/uploads/image_-VXxV0l98XU0fjydxDpCF.jpg | ["Glasses", "Mobile phone", "Person"]          |     1 |       1 | 2024-05-05 13:15:31 | 2024-05-05 13:15:31 |
+| 0DRn1058IdwtTItfI5-Lv | /Users/amberm/Documents/snaplingo-backend/uploads/image_0DRn1058IdwtTItfI5-Lv.jpg | ["Glasses", "Person"]                          |     1 |       1 | 2024-05-04 19:58:15 | 2024-05-04 19:58:15 |
+| 0y_JVBFO_wqzzilT3P-1u | /Users/amberm/Documents/snaplingo-backend/uploads/image_0y_JVBFO_wqzzilT3P-1u.jpg | ["Glasses", "Person"]                          |     1 |       1 | 2024-05-04 19:28:54 | 2024-05-04 19:28:54 |
+| 10KvOG7pb3fBNytUghOCi | /Users/amberm/Documents/snaplingo-backend/uploads/image_10KvOG7pb3fBNytUghOCi.jpg | ["Glasses", "Person"]                          |     1 |       1 | 2024-05-04 18:53:42 | 2024-05-04 18:53:42 |
+| 17lL7F7rWyyB788OExrVr | /Users/amberm/Documents/snaplingo-backend/uploads/image_17lL7F7rWyyB788OExrVr.jpg | ["Glasses", "Person"]                          |     1 |       1 | 2024-05-03 15:03:42 | 2024-05-04 14:02:09 |
+| 1Cvf8pjQtcajBPCGxNMW- | /Users/amberm/Documents/snaplingo-backend/uploads/image_1Cvf8pjQtcajBPCGxNMW-.jpg | ["Glasses", "Person"]                          |     1 |       1 | 2024-05-04 18:29:22 | 2024-05-04 18:29:22 |
++-----------------------+-----------------------------------------------------------------------------------+------------------------------------------------+-------+---------+---------------------+---------------------+
+10 rows in set (0.01 sec)
+```
 
-```js
-{
-  "Users": [
-    {
-      "user_id": 1,
-      "username": "user1",
-      "email": "user1@example.com",
-      "password": "hashed_password",
-      "pictures": [
-        {
-          "picture_id": 1,
-          "image_url": "https://example.com/image1.jpg",
-          "date_taken": "2024-04-16",
-          "category": "Category1",
-          "latitude": 40.7128,
-          "longitude": -74.0060,
-          "vocabulary": {
-            "vocab_id": 1,
-            "pronunciation": "pronunciation1",
-            "explanation": "explanation1",
-            "flashcards_url": "https://example.com/flashcards1"
-          },
-          "geosocial": {
-            "geosocial_id": 1,
-            "latitude": 40.7128,
-            "longitude": -74.0060,
-            "location_name": "New York City",
-          }
-        }
-      ]
-    },
-    {
-      "user_id": 2,
-      "username": "user2",
-      "email": "user2@example.com",
-      "password": "hashed_password",
-      "pictures": [
-        {
-          "picture_id": 2,
-          "image_url": "https://example.com/image2.jpg",
-          "date_taken": "2024-04-15",
-          "category": "Category2",
-          "latitude": 34.0522,
-          "longitude": -118.2437,
-          "vocabulary": {
-            "vocab_id": 2,
-            "pronunciation": "pronunciation2",
-            "explanation": "explanation2",
-            "flashcards_url": "https://example.com/flashcards2"
-          },
-          "geosocial": {
-            "geosocial_id": 2,
-            "latitude": 40.7128,
-            "longitude": -74.0060,
-            "location_name": "Los Angeles",
-          }
-        }
-      ]
-    }
-  ]
-}
+2. Table user:
+```
+mysql> SELECT * FROM user;
++----+-------+-------------------+----------+---------------------+---------------------+
+| id | name  | email             | pwd      | created_at          | updated_at          |
++----+-------+-------------------+----------+---------------------+---------------------+
+|  1 | Jojo  | Jojo@example.com  | Jojo123  | 2024-05-02 20:03:24 | 2024-05-02 20:03:24 |
+|  2 | Juju  | Juju@example.com  | Juju123  | 2024-05-02 20:03:24 | 2024-05-02 20:03:24 |
+|  3 | Amber | Amber@example.com | Amber123 | 2024-05-02 20:03:24 | 2024-05-02 20:03:24 |
++----+-------+-------------------+----------+---------------------+---------------------+
+3 rows in set (0.01 sec)
+```
+3. Table label_translation:
+```
+mysql> SELECT * FROM label_translation LIMIT 10;
++----+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+-----------------------+
+| id | label        | translation  | explanation                                                                                                                                                                                                                                                                   | synonyms | language | image_id              |
++----+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+-----------------------+
+|  1 | Teacup       | teacup       | a small cup usually with a handle used with a saucer for hot beverages                                                                                                                                                                                                        |          | en       | uJuiZeN13iFMbZWk1jTrc |
+|  2 | Mug          | mug:1        | a cylindrical drinking cup
+the face or mouth of a person
+grimace                                                                                                                                                                                                              |          | en       | uJuiZeN13iFMbZWk1jTrc |
+|  3 | Teacup       | teacup       | a small cup usually with a handle used with a saucer for hot beverages                                                                                                                                                                                                        |          | en       | uJuiZeN13iFMbZWk1jTrc |
+|  4 | Mug          | mug:1        | a cylindrical drinking cup
+the face or mouth of a person
+grimace                                                                                                                                                                                                              |          | en       | uJuiZeN13iFMbZWk1jTrc |
+|  5 | Clothing     | clothing     | items (as of cloth) designed to be worn to cover the body; also : coverings                                                                                                                                                                                                   |          | en       | UhCdDbrKkYbSD3KNs_WqB |
+|  6 | Mobile phone | mobile phone | cell phone                                                                                                                                                                                                                                                                    |          | en       | UhCdDbrKkYbSD3KNs_WqB |
+|  7 | Mobile phone | mobile phone | cell phone                                                                                                                                                                                                                                                                    |          | en       | UhCdDbrKkYbSD3KNs_WqB |
+|  8 | Person       | person       | human, individual —sometimes used in combination especially by those who prefer to avoid man in compounds applicable to both sexes
+a character or part in or as if in a play : guise
+one of the three modes of being in the Trinitarian Godhead as understood by Christians   |          | en       | UhCdDbrKkYbSD3KNs_WqB |
+|  9 | Clothing     | clothing     | items (as of cloth) designed to be worn to cover the body; also : coverings                                                                                                                                                                                                   |          | en       | UhCdDbrKkYbSD3KNs_WqB |
+| 10 | Mobile phone | mobile phone | cell phone                                                                                                                                                                                                                                                                    |          | en       | UhCdDbrKkYbSD3KNs_WqB |
++----+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+----------+-----------------------+
+10 rows in set (0.00 sec)
 
 ```
 
-1. **User Profile:**
-    - User ID
-    - Username
-    - Email
-    - Password 
-    - Picture 
-
-2. **Language Content:**
-    - Language ID
-    - Language name
-    - Language code
-    - Vocabulary lists (array of objects)
-        - Word
-        - Explaination
-        - Translation
-        - Speech
-
-3. **Picture Data:**
-    - Picture_id
-    - Picture_url
-    - Date_taken
-    - Category
-    - vocabulary
-    - Geosocial_id
-        
-4. **Vocab Data:**
-    -  Vocab_id
-    - pronunciation
-    - Explanation
-    - Flashcards_url
-5. **Geosocial**
-    - Geosocial_id
-    - Location_name
-
-
 ### Endpoints
 
-1. **User Authentication:**
-   - **Endpoints:** `/signup`, `/login`, `/logout`, 
-   - **Functionality:** Allows users to create accounts, log in, log out, and reset passwords.
-   - **Authentication:** Uses Firebase Authentication or custom authentication middleware.
-
-2. **Language:**
-   - **Endpoints:** `/languages`
-   - **Functionality:** Provides access to language data, including available languages, vocabulary lists, and lessons.
-   - **Data Source:** Makes HTTP requests to the Google Translate API for Translation.
-
-3. **Image Recognition:**
-   - **Endpoint:** `/recognizeImage`
-   - **Functionality:** Accepts user-uploaded images and performs image recognition using the Google Cloud Vision API to identify objects and extract relevant vocabulary.
+1. **(imageController) Image Recognition:**
+   - **Endpoint:** `/uploadImage`
+   - **Functionality:** Accepts user-uploaded pictures and performs image recognition using the Google Cloud Vision API to identify objects and extract relevant vocabulary.
    - **Integration:** Makes HTTP requests to the Google Cloud Vision API for image analysis.
+   - **Data Storage:** Stores uploaded picture, user and vocabulary data in a database.
 
-4. **User Data Management:**
-   - **Endpoints:** `/users/{userId}`, `/users/{userId}/{ImageId}`
-   - **Functionality:** Manages user profiles and tracks user content, including completed words, mastered vocabulary, and learning vocabulary.
-   - **Data Storage:** Stores user data in a database.
+2. **(imageController) Content Management :**
+   - **Endpoints:** `/getImagesByDate`
+   - **Functionality:** Display all the pictures information sorted by date.
 
-5.  **Content Management:**
-   - **Endpoints:** `/content`, `/content/{contentId}`
-   - **Functionality:** Provides CRUD operations for managing language content, including vocabulary lists, image recognition data, and related sentences/story data.
-   - **Integration:** Supports administrative functions for managing content.
+3.  **(recordsController)Recent records Management:**
+   - **Endpoints:** `/getRecentRecords`
+   - **Functionality:** Provides the most recent pictures data displayed on the main page based on most recent created time.
+4. **(vocabController) Vocab management**
+   - **Endpoints:** `/getVocabs`
+   - **Functionality:** Retrives the vocabs data based on provided image id.
 
 
 ### Auth
@@ -282,18 +232,18 @@ Does your project include any login or user profile functionality? If so, descri
 
 ## Nice-to-haves
 1. Basic requirements:
-- Login/out, Authentication
-    - Errors
-- Select target language
-- Upload images
-- Recognize images
-- Save and retrieve images and vocabulary data
-- Vocab details
-- Images sort by dates
+- Use camera
+- Take pictures
+- Recognize pictures
+- Translate the objects on the pictures
+- Store the user/image/vocabulary data
+- Retrieve images and vocabulary data
+- Images sorted by dates
 
 2. Further requirements:
 - Flesh card generation
-- Vocabs sort by ategory
+- Vocabs sort by category
+- Vocab details
 - Geo info sharing
 - Vocab "Like" list
 
