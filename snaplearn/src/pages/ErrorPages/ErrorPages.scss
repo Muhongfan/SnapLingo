@@ -1,0 +1,11 @@
+.error {
+    &__container {
+        display: flex;
+        margin: 0 auto;
+        text-align: center;
+        justify-content: center;
+    }
+    &__title {
+        margin-top: 2rem;
+    }
+}

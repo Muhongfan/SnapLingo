@@ -1,0 +1,62 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.category {
+  margin: 0;
+
+
+&__wrapper{
+    padding: 0 1.875rem;
+}
+  &__container {
+    max-width: 80rem;
+    width: 100vw;
+    // padding: 2rem;
+
+    @include tablet {
+      position: relative;
+    }
+  }
+
+
+  &-menu {
+    padding: .625rem;
+    &__item{
+        width: 9.375rem;
+    }
+    &__title {
+        display: none;
+        @include tablet {
+          display: flex;
+          font-size: x-large;
+    
+        }
+      }
+    @include tablet {
+      position: absolute;
+      top: 8rem; // Adjust the top position as needed
+      right: 2.8125rem;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: inline-block;
+
+      background-color: white;
+      z-index: 1; // Ensure the menu is above other content
+    }
+
+    &__mobile {
+      position: absolute;
+
+      top: 0;
+      padding: 8px;
+      left: 10rem;
+      columns: black;
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+  &__header {
+  }
+}

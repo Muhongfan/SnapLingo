@@ -1,0 +1,78 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.navbar {
+  width: 100%;
+  padding: 1.25rem 1.25rem;
+  color: $font-color;
+  display: flex;
+  justify-content: space-between; /* Position children at the beginning and end of the flex container */
+  align-items: center; /* Align children vertically in the center */
+  @include tablet {
+    padding: 2% 3%;
+  }
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.625rem;
+    @include tablet {
+      gap: 1.25rem;
+    }
+  }
+  &__mobile {
+    z-index: 1000;
+    background-color: white;
+  }
+
+  nav {
+    background-color: white;
+
+    ul {
+      list-style-type: none; /* Remove bullet points from the list */
+      margin: 0;
+      padding: 0;
+      background-color: white;
+
+
+      li {
+        margin-right: 20px; /* Add space between list items */
+        display: inline-block; /* Display list items horizontally */
+
+        button {
+          all: unset; /* Reset all button styles */
+          cursor: pointer; /* Change cursor to pointer on hover */
+        }
+      }
+    }
+  }
+
+  &__login {
+    display: flex; /* Use flexbox for login elements */
+    align-items: center; /* Align items vertically in the center */
+    gap: .625rem;
+    @include tablet{
+      gap: 1.25rem;
+
+    }
+
+  }
+}
+// Button {
+//   // margin-right: 10px; /* Add space between Button and Avatar */
+//   color: #afc3ab;
+//   border-color: #afc3ab;
+// }
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.activesState{
+  border-bottom: 1px solid black;
+padding-bottom: 5px;
+}

@@ -1,0 +1,58 @@
+@use "../../styles/partials/mixins" as *;
+
+.details {
+    background-color: #f5f5f5;
+
+  &__wrapper {
+    // background-color: #cec0bb;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+    width: 100%;
+    // height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__box-container {
+    max-width: 49.125rem;
+
+    width: 100%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 8px; /* You can adjust the value as needed */
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* You can adjust the shadow as needed */
+    padding: 24px; /* You can adjust the padding as needed */
+  }
+  &__content {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  &__item {
+    border: 1px solid;
+  }
+  &__camera {
+    width: 100%;
+    text-align: center;
+    @include tablet {
+      width: 50%;
+    }
+  }
+  &__vocabs {
+    width: 100%;
+    @include tablet {
+      width: 50%;
+    }
+  }
+  &__warning {
+    margin-top: 50px;
+    font-weight: 600;
+    text-align: center;
+  }
+}

@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+
+.date{
+    background-color: #f5f5f5;
+    opacity: 0.8;
+    overflow-y: scroll;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    scroll-snap-type: y mandatory;
+    min-width: 23.4375rem;
+    width: 100vw;
+// &__wrapper{
+// padding: 0 1.25rem;
+// }
+
+    &__item{
+        min-width: 23.4375rem;
+
+        padding: 0 1.25rem;
+        @include tablet {
+            padding: 0 3%;
+        }
+
+
+    }
+    &__imageList{
+            width: auto;
+            height: 300px; // Set height to 300 pixels
+    }
+}

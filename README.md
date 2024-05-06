@@ -298,3 +298,9 @@ Does your project include any login or user profile functionality? If so, descri
 - Vocab "Like" list
 
 
+## Implementation
+
+### Frontend setup 
+- Create remote git repo
+- Create React app: `npx create-react-app snaplearn`
+- Setup development environment: `npm install react-router-dom @mui/icons-material @mui/joy @emotion/react @emotion/styled sass axios `
