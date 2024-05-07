@@ -3,6 +3,8 @@ import axios from "axios";
 import { API_URL } from "../../utils/utils";
 import { nanoid } from "nanoid";
 import "./ImageCapture.scss";
+// const  { genAI }  =  require ( '@google-ai/generativelanguage' ) . v1beta2 ;
+
 const ImageCapture = ({ onImgIdChange }) => {
   const imgRef = useRef(null);
   const canvasRef = useRef(null);
@@ -18,6 +20,7 @@ const ImageCapture = ({ onImgIdChange }) => {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       setCameraActive(true);
       setCapturedImage(null);
+      setIsLoading(false)
       if (imgRef.current) {
         imgRef.current.srcObject = stream;
       }
@@ -38,7 +41,6 @@ const ImageCapture = ({ onImgIdChange }) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     
-
     const imgId = nanoid();
     setImgId(imgId);
 
@@ -56,27 +58,56 @@ const ImageCapture = ({ onImgIdChange }) => {
   const sendImageToBackend = async () => {
     try {
       setIsLoading(true);
-
       const response = await axios.post(`${API_URL}/api/images/upload`, {
         id: imgId,
         image: capturedImage,
       });
 
-      onImgIdChange(imgId, response.data);
-      console.log("Image uploaded successfully");
+      onImgIdChange(response.data);
+      // console.log("capturedImage",capturedImage);
       setTimeout(() => {
         setIsLoading(false);
       }, 0);
       
     } catch (error) {
+      setIsLoading(false);
       console.error("Error uploading image:", error);
     }
   };
+  // const handleImageCaption = async (image) => {
+  //   try {
+  //     //   const imageFile = event.target.files[0];
+  //     const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+
+  //     const prompt = `Please generate three unique and creative captions to use for this live photo. The caption should be descriptive and creative.
+  //     Captions:
+  //     1.
+  //     2.
+  //     3.
+  //   `;
+
+  //     // const image = {
+  //     //   inlineData: {
+  //     //       data:imageFile,
+  //     //   //   data: Buffer.from(fs.readFileSync("cookie.png")).toString("base64"),
+  //     //     mimeType: "image/png",
+  //     //   },
+  //     // };
+
+  //     const result = await model.generateContent([prompt, image]);
+  //     console.log(result.response.text());
+  //     console.log("caption:", result)
+
+  //   } catch (error) {
+  //     console.error("Error generating caption:", error);
+  //   }
+  // };
 
   const handleImageSendToBackend = async () => {
     try {
       captureImage();
       setCameraActive(false);
+
       stopCamera();
     } catch (error) {
       console.error("Error sending image to backend:", error);
