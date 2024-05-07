@@ -2,23 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./Details.scss";
 import {
   ChakraProvider,
-  Box,
-  Container,
   Heading,
   Text,
-  SimpleGrid,
 } from "@chakra-ui/react";
 import CardItem from "../../components/CardItem/CardItem";
 import ImageCapture from "../../components/ImageCapture/ImageCapture";
 
 const Detail = () => {
-  const [imgId, setImgId] = useState(null);
+  // const [imgId, setImgId] = useState(null);
   const [vocabData, setVocabData] = useState(null);
 
-  const handleImgIdChange = (imgid, vocabs) => {
-    setImgId(imgid);
+  const handleImgIdChange = (vocabs) => {
+    // setImgId(imgid);
     setVocabData(vocabs);
-    // console.log("vocabs:",vocabs);
+    console.log("vocabs:",vocabs);
   };
 
   return (

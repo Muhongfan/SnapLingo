@@ -4,10 +4,9 @@
 .category {
   margin: 0;
 
-
-&__wrapper{
+  &__wrapper {
     padding: 0 1.875rem;
-}
+  }
   &__container {
     max-width: 80rem;
     width: 100vw;
@@ -18,28 +17,27 @@
     }
   }
 
-
   &-menu {
-    padding: .625rem;
-    &__item{
-        width: 9.375rem;
+    padding: 0.625rem;
+    width: 9.375rem;
+
+    &__item {
+      width: 9.375rem;
     }
     &__title {
-        display: none;
-        @include tablet {
-          display: flex;
-          font-size: x-large;
-    
-        }
+      display: none;
+      @include tablet {
+        display: flex;
+        font-size: x-large;
       }
+    }
     @include tablet {
       position: absolute;
-      top: 8rem; // Adjust the top position as needed
-      right: 2.8125rem;
+      top: 14rem; 
+      left: 80%;
       border: 1px solid black;
       border-radius: 5px;
       display: inline-block;
-
       background-color: white;
       z-index: 1; // Ensure the menu is above other content
     }
