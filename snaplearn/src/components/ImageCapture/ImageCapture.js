@@ -58,12 +58,6 @@ const ImageCapture = ({ onImgIdChange }) => {
   const sendImageToBackend = async () => {
     try {
       setIsLoading(true);
-      // console.log("capturedImage", capturedImage)
-      // const hashTags = await handleImageCaption(capturedImage)
-      // console.log("hashTags",hashTags);
-      // const hashTags = await prediction(capturedImage)
-      // console.log("hashTags", hashTags)
-
       const response = await axios.post(`${API_URL}/api/images/upload`, {
         id: imgId,
         image: capturedImage,
