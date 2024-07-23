@@ -54,7 +54,7 @@ SnapLearn revolutionizes language learning by integrating immersive experiences 
 2. **Backend:**
    - **Node.js**
    - **Express.js** 
-   - **MongoDB**
+   - **MySQL**
 
 3. **Authentication:**
    - **Authentication** 
