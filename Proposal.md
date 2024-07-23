@@ -88,9 +88,9 @@ Geo Social (TBD): Introduce map to show the location that user took the pics, an
 
 ### Mockups
 Mockups (only provided mobile):
-![alt text](ui/mockup1.png)
+![Mockups1](images/mockup1.png)
 
-![alt text](ui/mockup2.png)
+![Mockups2](images/mockup2.png)
 ### Data
 ![Database Table](images/db_tables.png)
 1. Table image:
