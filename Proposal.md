@@ -1,4 +1,4 @@
-# SnapLingo
+# SnapLearn
 
 ## Overview
 
