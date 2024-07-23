@@ -1,4 +1,4 @@
-### SnapLearn
+### SnapLingo
 
 <!-- ABOUT THE PROJECT -->
 
